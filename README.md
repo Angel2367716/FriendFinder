@@ -7,6 +7,7 @@ The FrienFinder application will allow the user to take surverys and then compar
 
 * [Express](https://www.npmjs.com/package/express)
 * [Path](https://www.npmjs.com/package/path)
+* [body-parser](https://www.npmjs.com/package/body-parser)
 
 
 
