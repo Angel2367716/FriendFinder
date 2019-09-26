@@ -71,7 +71,7 @@ var friends = [
         "5",
         "5"
     ]},
-    {        customerName: "Arnold",
+    {        customerName: "Arnold Smith",
     customerEmail: "https://images.pexels.com/photos/2962816/pexels-photo-2962816.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     scores: [
         "3",
@@ -85,8 +85,8 @@ var friends = [
         "3",
         "2"
     ]},
-    {        customerName: "",
-    customerEmail: "",
+    {        customerName: "Aubree Gaines",
+    customerEmail: "https://images.pexels.com/photos/2422257/pexels-photo-2422257.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
     scores: [
         "5",
         "5",
