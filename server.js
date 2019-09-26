@@ -1,8 +1,8 @@
 // Dependencies
 const express = require('express');
-const app = express();
-const bodyParser = require ('body-parser');
+const path = require('path');
 
+const app = express();
 const PORT = process.env.PORT || 3030
 
 // app.use = (bodyParser.urlencoded({extended: true})); // creates application/x-www-form-urlencoded parser
@@ -16,6 +16,7 @@ const PORT = process.env.PORT || 3030
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, "/app/public")));
 
 //ROUTES
 require("./app/routing/apiRoutes.js")(app);
