@@ -2,7 +2,7 @@
 $("#submit").on("click", function(){
 
     //validation 
-    function validate(){
+    function validateForm(){
         let isItValid = true;
         $(".form-control").each(function(){
             if($(this).val()=== ""){
@@ -17,7 +17,7 @@ $("#submit").on("click", function(){
         });
         return isItValid;
     }
-    if (validate()){
+    if (validateForm()){
         let userData = {
             name: $("#name").val(),
             photo: $("#photo").val(),
