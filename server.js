@@ -15,7 +15,7 @@ app.use(bodyParser.text({type: 'text/html'})); //parses html body into a string
 
 //ROUTES
 // require("./routes/apiRoutes")(app);
-// require("./routes/htmlRoutes")(app);
+require("./app/routing/htmlRoutes.js")(app);
 
 app.listen(PORT, function() {
     console.log("App listening on PORT: " + PORT);
