@@ -1,5 +1,5 @@
 body {
-    background: url(../images/background.png)  no-repeat center center fixed;
+  background: url(../images/black_paper.png)  no-repeat center center fixed;
     -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -8,16 +8,25 @@ body {
 }
 
 .jumbotron {
-    background-size:cover;
-    background-color: rgba(16, 132, 209, 0.568);
-  color: inherit;
-}
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background: url(../images/background.png);
+    
+    /* background-size:cover;  */
+    /* background-color: lightblue; */
+    /* background: url("https://images.pexels.com/photos/1036936/pexels-photo-1036936.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+  color: inherit;  */
+ }
 
+.container{
+  /* background: url(../images/black_paper.png) */
+  background: url(../images/background.png);
 
-.image-fluid {
-    max-width: 100%;
-    height:auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
 }
+/* 
+.center_div{
+  margin: 0 auto;
+  width:50%
+} */
