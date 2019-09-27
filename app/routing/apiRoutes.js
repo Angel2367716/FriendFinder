@@ -26,15 +26,21 @@ module.exports = function (app) {
         console.log(userScores);
 
         //totalPoDi = Total Points Difference
-        const totalPoDi = 0;
+        let totalPoDi = 0;
 
-        for (let f = 0; f < friends[f].scores[f]; f++) {
-            totalPoDi += Math.abs(parseInt(userScores[f]) - parseInt(friends[f].scores[f]));
+        for (let i = 0; i < friends.length; i++) {
+            console.log(friends[i]);
+            totalPoDi = 0;
 
-            if (totalPoDi <= bestFit.pointDifference) {
-                bestFit.name = friends[f].name;
-                bestFit.phoeot = friends[f].photo;
-                bestFit.pointDifference = totalPoDi;
+            for(let f = 0; f < friends[i].scores[f]; f++){
+                totalPoDi += Math.abs(parseInt(userScores[f]) - parseInt(friends[i].scores[f]));
+
+                
+                if (totalPoDi <= bestFit.pointDifference) {
+                    bestFit.name = friends[i].name;
+                    bestFit.photo = friends[i].photo;
+                    bestFit.pointDifference = totalPoDi;
+                }
             }
         }
         friends.push(userData);

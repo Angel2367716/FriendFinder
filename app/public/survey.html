@@ -5,12 +5,17 @@
     <meta charset="UTF-8">
     <title>Friend Finder</title>
     <link rel="stylesheet" href="./assets/style/reset.css">
-    
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     <link rel="stylesheet" href="./assets/style/style.css">
+
+    <!--jQuery stuff-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!--Form logic-->
+    <!-- <script src="../public/assets/js/form.js"></script> -->
 </head>
 
 <body>
@@ -35,10 +40,10 @@
     <div class="container">
 
         <h4>Name (Required)</h4>
-        <input type="text" name="" id="name" class="form-control" required>
+        <input type="text" id="name" class="form-control" required>
 
-        <h4>Link to Picture (Required)</h4>
-        <input type="text" name="" id="photo" class="form-control" required>
+        <h4>Link to Photo (Required)</h4>
+        <input type="text" id="photo" class="form-control" required>
         <hr>
         <div class="row">
             <div class="col-md">
@@ -180,7 +185,8 @@
                 <div class="col-sm">
                     <footer class="footer">
                         <div class="container">
-                            <p><a href="/api/friends">API Friend List</a> | <a href="https://github.com/Angel2367716/FriendFinder">GitHub Repo</a>
+                            <p><a href="/api/friends">API Friend List</a> | <a
+                                    href="https://github.com/Angel2367716/FriendFinder">GitHub Repo</a>
                         </div>
                     </footer>
                 </div>
@@ -189,64 +195,86 @@
             </div>
         </div>
     </div>
-        <!--jQuery stuff-->
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> -->
-        <!--Main game logic-->
-        <!-- <script src="../public/assets/js/form.js"></script> -->
 
+    <!-- Modal -->
+    <div id="resultModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
+            <!--Modal Content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title"><strong>Best Match</strong></h2>
+                </div>
+                <div class="modal-body">
+                    <h2 id="matchName"></h2>
+                    <img id="matchImg" src="#" alt="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
-<script type="text/javascript">
-    
-    //Form inputs
-    $("#submit").on("click", function(event){
-        event.preventDefault();
-    //validation 
-    function validateForm(){
-        var isValid = true;
-        $(".form-control").each(function(){
-            if($(this).val()=== ""){
-                isValid = false;
+    <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
+    <script type="text/javascript">
+
+        //Form inputs
+        $("#submit").on("click", function (event) {
+            event.preventDefault();
+            //validation 
+            function validateForm() {
+                var isValid = true;
+                $(".form-control").each(function () {
+                    if ($(this).val() === "") {
+                        isValid = false;
+                    }
+                });
+
+                $(".chosen-select").each(function () {
+                    if ($(this).val() === "") {
+                        isValid = false;
+                    }
+                });
+                return isValid;
             }
-        });
-    
-        $(".chosen-select").each(function(){
-            if($(this).val()===""){
-                isValid = false; 
+            //If all the fileds are filled then create an object of the user data
+            if (validateForm()) {
+                var userData = {
+                    name: $("#name").val(),
+                    photo: $("#photo").val(),
+                    scores: [
+                        $("#q1").val(),
+                        $("#q2").val(),
+                        $("#q3").val(),
+                        $("#q4").val(),
+                        $("#q5").val(),
+                        $("#q6").val(),
+                        $("#q7").val(),
+                        $("#q8").val(),
+                        $("#q9").val(),
+                        $("#q10").val()
+                    ]
+                };
+
+                var currentURL = window.location.origin;
+                //post the hte user objcet to the api friends
+                $.post("/api/friends", userData, function (data) {
+                    $("#matchName").text(data.name);
+                    $("#matchImg").attr("src", data.photo);
+                    //this part will show the modal with the best match
+                    $("#resultsModal").modal("toggle");
+                    alert("working");
+                });
+            } else {
+                alert("Please fill out all fields before submitting!");
             }
+
         });
-        return isValid;
-    }
-    //If all the fileds are filled then create an object of the user data
-    if (validateForm()){
-        var userData = {
-            name: $("#name").val(),
-            photo: $("#photo").val(),
-            scores: [
-                $("#q1").val(),
-                $("#q2").val(),
-                $("#q3").val(),
-                $("#q4").val(),
-                $("#q5").val(),
-                $("#q6").val(),
-                $("#q7").val(),
-                $("#q8").val(),
-                $("#q9").val(),
-                $("#q10").val()
-            ]
-        };
-    
-        var currentURL = window.location.origin;
-        //post the hte user objcet to the api friends
-        $.post("/api/friends", userData, function(data){
-            alert("working");
-        })
-    }
-    })
-      
-      </script>
-      
+
+    </script>
+
 
 </body>
 
