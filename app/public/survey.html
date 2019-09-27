@@ -16,6 +16,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <!--Form logic-->
     <!-- <script src="../public/assets/js/form.js"></script> -->
+
+
+     <!-- Font Awesome Glyphicons -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+  <!-- Chosen -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -197,7 +206,7 @@
     </div>
 
     <!-- Modal -->
-    <div id="resultModal" class="modal fade" role="dialog">
+    <div id="resultsModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
             <!--Modal Content-->
@@ -219,6 +228,25 @@
 
     <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
     <script type="text/javascript">
+      // Chosen CSS
+      var config = {
+      ".chosen-select": {},
+      ".chosen-select-deselect": {
+        allow_single_deselect: true
+      },
+      ".chosen-select-no-single": {
+        disable_search_threshold: 10
+      },
+      ".chosen-select-no-results": {
+        no_results_text: "Oops, nothing found!"
+      },
+      ".chosen-select-width": {
+        width: "95%"
+      }
+    };
+    for (var selector in config) {
+      $(selector).chosen(config[selector]);
+    }
 
         //Form inputs
         $("#submit").on("click", function (event) {
@@ -265,7 +293,7 @@
                     $("#matchImg").attr("src", data.photo);
                     //this part will show the modal with the best match
                     $("#resultsModal").modal("toggle");
-                    alert("working");
+                    // alert("working");
                 });
             } else {
                 alert("Please fill out all fields before submitting!");
