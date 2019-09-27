@@ -1,7 +1,7 @@
 # FriendFinder
 
 ## Overview 
-The FrienFinder application will allow the user to take surverys and then compare their results from the surveys other users have take. Then the application will display the name and picture of the user with the best overall match. 
+The FrienFinder application will allow the user to take a survey and then the application will populate the picture and name of the best match available on the database. The best match is based on the answers given on the survey, the most similar answers will be defined as a match. 
 
 ## Technologies Used:
 
