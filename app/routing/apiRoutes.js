@@ -1,9 +1,5 @@
 // ===============================================================================
-// LOAD DATA
-// We are linking our routes to a series of "data" sources.
-// These data sources hold arrays of information on table-data, waitinglist, etc.
-// ===============================================================================
-const friends = require("../data/friends");
+const friends = require("../data/friends.js");
 
 module.exports = function (app) {
     app.get("/api/friends", function (req, res) {
@@ -12,7 +8,7 @@ module.exports = function (app) {
 
     app.post("/api/friends", function (req, res) {
 
-        let bestFit = {
+        var bestFit = {
             name: "",
             photo: "",
             pointDifference: 1000
@@ -20,8 +16,8 @@ module.exports = function (app) {
 
         console.log(req.body);
 
-        let userData = req.body;
-        let userScores = userData.scores;
+        var userData = req.body;
+        var userScores = userData.scores;
 
         console.log(userScores);
 
